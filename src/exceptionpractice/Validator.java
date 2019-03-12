@@ -1,41 +1,34 @@
 package exceptionpractice;
 
 public class Validator {
+	class InvalidNameException extends Exception{
+		public InvalidNameException(String name) {
+			System.out.println("Invalid employee name");
+		}
+	}
 	
-	public void validate(Applicant applicant) {
-		try
-		{
-			isValidName(applicant.applicantName);
-			throw new InvalidNameException();
-			isValidAge(applicant.applicantAge);
-			isValidPost(applicant.postApplied);
+	class InvalidAgeException extends Exception{
+		public InvalidAgeException(int age) {
+			System.out.println("Invalid employee age");
 		}
-		catch(InvalidNameException e)
+	}	
+	
+	public void validate(Employee employee) throws InvalidNameException, InvalidAgeException
+	{
+		if(isValidName(employee.name) == false)
 		{
-			System.out.println("Invalid applicant name");
+			throw new InvalidNameException(employee.name);
 		}
-		catch(InvalidPostException e)
+		else if(isValidAge(employee.age) == false)
 		{
-			System.out.println("Invalid post");
+			throw new InvalidAgeException(employee.age);
 		}
-		catch(InvalidAgeException e)
-		{
-			System.out.println("Invalid age exception");
-		}
-		
+		else
+			System.out.println("All the values are valid.");
 	}
 	
 	public boolean isValidName(String name) {
-		if(name != null && !name.isEmpty())
-		{
-			return true;
-		}
-		else
-			return false;
-	}
-	
-	public boolean isValidPost(String post) {
-		if(post == "Probationary Officer" || post == "Assistant" || post == "Special Cadre Officer")
+		if(name.length() > 8)
 		{
 			return true;
 		}
@@ -44,7 +37,7 @@ public class Validator {
 	}
 	
 	public boolean isValidAge(int age) {
-		if(age > 18 && age < 35)
+		if(age > 18 && age < 60)
 		{
 			return true;
 		}
