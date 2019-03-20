@@ -1,0 +1,8 @@
+2019-03-13 15:56:08,125 +0530 [main] INFO  (Tester.java:37) - success
+2019-03-13 15:56:47,468 +0530 [main] INFO  (Tester.java:37) - success
+2019-03-13 16:26:47,602 +0530 [main] INFO  (Tester.java:40) - Only 1 T-Shirt left
+2019-03-13 16:26:47,607 +0530 [main] INFO  (Tester.java:47) - success
+2019-03-13 17:48:24,263 +0530 [main] INFO  (Tester.java:46) - Only 1 T-Shirt left
+2019-03-13 17:48:24,268 +0530 [main] INFO  (Tester.java:53) - success
+2019-03-13 17:52:46,564 +0530 [main] INFO  (Tester.java:41) - Only 1 T-Shirt left
+2019-03-13 17:52:46,569 +0530 [main] INFO  (Tester.java:45) - T-Shirt out of stock.

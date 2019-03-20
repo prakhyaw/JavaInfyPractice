@@ -1,12 +1,18 @@
 package exceptionpractice;
 
-import exceptionpractice.Validator1.InvalidAgeException;
-import exceptionpractice.Validator1.InvalidNameException;
-import exceptionpractice.Validator1.InvalidPostException;
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
 
 public class Tester {
+	
+	final static Logger logger = Logger.getLogger(Tester.class);
 
-	public static void main(String[] args) {
+	class OutOfStockException extends Exception {
+		public OutOfStockException(String name) {
+			System.out.println(name);
+		}
+	}
+	public static void main(String[] args) throws OutOfStockException  {
 		// TODO Auto-generated method stub
 		
 		/*Applicant app = new Applicant();
@@ -29,10 +35,25 @@ public class Tester {
 		
 		Validator v = new Validator();
 		v.v*/
-		
+		PropertyConfigurator.configure("log4j.properties");
 		Product p = new Product(1, "T-Shirt", 3);
-		p.orderProduct(p);
-
+		String name = p.getProductName();
+		for(int i = 0; i <= 3; i++)
+		{
+			p.orderProduct(p);
+			System.out.println(p.getStock());
+			if(p.getStock() == 1)
+			{
+				logger.info("Only 1 "+name+" left");
+			}
+			if(p.getStock() < 1)
+			{
+				logger.info(p.getProductName()+" out of stock.");
+				//throw new OutOfStockException(name);			
+			}
+			
+		}
+		
 	}
 
 }
